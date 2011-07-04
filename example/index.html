@@ -23,7 +23,7 @@
     });
 
     function progressNext(bar){
-      var api = bar.progressBar();
+      var api = bar.progressBar().data('api');
       api.setValue((api.value + 1)%(api.total+1));
     }
 

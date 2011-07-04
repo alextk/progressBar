@@ -16,13 +16,21 @@
     },
 
     setValue: function(newValue) {
-      this.value = newValue % (this.total + 1);
-      this.syncUI();
+      if(this.value != newValue){
+        this.value = newValue % (this.total + 1);
+        this.syncUI();
+      }
+
+      return this;
     },
 
     setTotal: function(newTotal) {
-      this.total = newTotal;
-      this.setValue(this.value);
+      if(this.total != newTotal){
+        this.total = newTotal;
+        this.setValue(this.value);
+      }
+
+      return this;
     },
 
     syncUI: function() {
@@ -81,17 +89,16 @@
   }
 
   $.fn.progressBar = function(options) {
-    if (options) { //create new progress bar widgets
+    var api = $(this).data('api');
+    if(!api){
       this.each(function() {
         var target = $(this);
-        var config = $.extend($.fn.progressBar.defaults, options);
+        var config = $.extend($.fn.progressBar.defaults, options || {});
         config.rtl = target.css('direction') == 'rtl';
         target.data('api', new ProgressBarClass(createUI(target), config));
       });
-      return this;
-    } else { //return existing instance api
-      return $(this).data('api');
     }
+    return this;
   };
 
   $.fn.progressBar.defaults = {

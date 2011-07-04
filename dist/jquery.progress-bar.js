@@ -8,7 +8,7 @@
 *   http://en.wikipedia.org/wiki/MIT_License
 *   http://en.wikipedia.org/wiki/GNU_General_Public_License
 *
-* Date: Mon Jul 4 16:59:27 2011 +0300
+* Date: Mon Jul 4 19:25:55 2011 +0300
 */
 
 (function($) {
@@ -29,13 +29,21 @@
     },
 
     setValue: function(newValue) {
-      this.value = newValue % (this.total + 1);
-      this.syncUI();
+      if(this.value != newValue){
+        this.value = newValue % (this.total + 1);
+        this.syncUI();
+      }
+
+      return this;
     },
 
     setTotal: function(newTotal) {
-      this.total = newTotal;
-      this.setValue(this.value);
+      if(this.total != newTotal){
+        this.total = newTotal;
+        this.setValue(this.value);
+      }
+
+      return this;
     },
 
     syncUI: function() {
@@ -94,24 +102,22 @@
   }
 
   $.fn.progressBar = function(options) {
-    if (options) { //create new progress bar widgets
+    var api = $(this).data('api');
+    if(!api){
       this.each(function() {
         var target = $(this);
-        var config = $.extend($.fn.progressBar.defaults, options);
+        var config = $.extend($.fn.progressBar.defaults, options || {});
         config.rtl = target.css('direction') == 'rtl';
         target.data('api', new ProgressBarClass(createUI(target), config));
       });
-      return this;
-    } else { //return existing instance api
-      return $(this).data('api');
     }
+    return this;
   };
 
   $.fn.progressBar.defaults = {
     start: 0,
     total: 100,
-    cssRange: {0: 'red', 30: 'orange', 75: 'green'},
-    width: 200
+    cssRange: {0: 'red', 30: 'orange', 75: 'green'}
   };
 
 })(jQuery);
