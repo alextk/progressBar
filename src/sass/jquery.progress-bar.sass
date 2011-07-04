@@ -1,0 +1,52 @@
+@mixin round($radius)
+  -webkit-border-radius: #{$radius}
+  -moz-border-radius: #{$radius}
+  border-radius: #{$radius}
+
+@mixin shadow($shadow)
+  -webkit-box-shadow: $shadow
+  -moz-box-shadow: $shadow
+
+div.progress-bar-container
+  height: 28px
+  width: 180px
+  border: 1px solid #83a3b8
+  position: relative
+
+  @include round(10px)
+  background-color: #c1d2de
+
+  div.bar
+    @include round(10px)
+    @include shadow(1px 1px 2px #888)
+    background-color: #aaa
+    width: 10px
+    float: left
+
+    background-repeat:  repeat-x
+    background-position: top left
+
+  div.percent
+    position: absolute
+    top: 0px
+    font-size: 11px
+    padding: 0px 5px
+    font-style: italic
+    font-weight: normal
+
+  &.red
+    div.bar
+      background-image:  url(images/bg_fill_red.png)
+
+  &.orange
+    div.bar
+      background-image:  url(images/bg_fill_orange.png)
+
+  &.green
+    div.bar
+      background-image:  url(images/bg_fill_green.png)
+
+  &.rtl
+    div.bar
+      float: right
+      @include shadow(-1px 1px 2px #888)

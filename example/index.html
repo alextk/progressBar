@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>progressBar example</title>
+  <!-- Include latest jQuery -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
+  <!-- Include plugin code testing framework -->
+  <link rel="Stylesheet" media="screen" href="../dist/css/jquery.progress-bar.css"/>
+  <script type="text/javascript" src="../dist/jquery.progress-bar.js"></script>
+
+  <!-- Include project source files -->
+  <!-- Include unit test files -->
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+      $('#bar1').progressBar({start: 0, total: 3});
+      $('#bar2').progressBar({start: 2, total: 10});
+      $('#bar3').progressBar({start: 0, total: 3});
+      $('#bar4').progressBar({start: 2, total: 10});
+    });
+
+    function progressNext(bar){
+      var api = bar.progressBar();
+      api.setValue((api.value + 1)%(api.total+1));
+    }
+
+  </script>
+
+  <style type="text/css">
+    div.panel{
+      border: 1px solid #aaa;
+      padding: 20px;
+      margin: 20px;
+    }
+    #bar1 div.progress-bar-container, #bar3 div.progress-bar-container{
+      width: 400px;
+    }
+    #bar2 div.progress-bar-container, #bar4 div.progress-bar-container{
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>progressBar examples</h1>
+
+<div id='bar1' class="panel">
+  <div>
+    start: 0, total: 3, width: 400px (from css)
+    <a href="javascript:;" onclick="progressNext($('#bar1'))">Next</a>
+  </div>
+</div>
+
+<div id='bar2' class="panel">
+  <div>
+    start: 2, total: 10, width: default, height: 18px (From css)
+    <a href="javascript:;" onclick="progressNext($('#bar2'))">Next</a>
+  </div>
+</div>
+
+<div style="direction: rtl;">
+  <h3>RTL</h3>
+  <div id='bar3' class="panel">
+    <div>
+      start: 0, total: 3, width: 400px (from css)
+      <a href="javascript:;" onclick="progressNext($('#bar3'))">Next</a>
+    </div>
+  </div>
+
+  <div id='bar4' class="panel">
+    <div>
+      start: 2, total: 10, width: default, height: 18px (From css)
+      <a href="javascript:;" onclick="progressNext($('#bar4'))">Next</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
