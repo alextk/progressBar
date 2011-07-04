@@ -1,6 +1,10 @@
 # [progressBar]() - jQuery plugin for progress bar ui widget
 ================================
 
+Usage
+---------------------
+See wiki on github: https://github.com/alextk/progressBar/wiki
+
 Pre-compiled scripts
 --------------------
 If you're not interested in compiling your own version of progressBar, you can grab the pre-compiled scripts from the
@@ -34,7 +38,8 @@ the following to build progressBar:
 
 You can also create each individually using these commands:
 
-	make jqext		# Build non-minified progressBar source
+	make js		  # Build non-minified progressBar source
+	make css		# Generate css from sass and copy images into dist folder
 	make min 		# Build minified JS and CSS
 	make pack		# Build minified and packed progressBar JS (smallest filesize!)
 

@@ -97,8 +97,7 @@
   $.fn.progressBar.defaults = {
     start: 0,
     total: 100,
-    cssRange: {0: 'red', 30: 'orange', 75: 'green'},
-    width: 200
+    cssRange: {0: 'red', 30: 'orange', 75: 'green'}
   };
 
 })(jQuery);
