@@ -9,7 +9,7 @@
 
   <!-- Include plugin code testing framework -->
   <link rel="Stylesheet" media="screen" href="../dist/css/jquery.progress-bar.css"/>
-  <script type="text/javascript" src="../dist/jquery.progress-bar.js"></script>
+  <script type="text/javascript" src="../src/jquery.progress-bar.js"></script>
 
   <!-- Include project source files -->
   <!-- Include unit test files -->
@@ -23,8 +23,8 @@
     });
 
     function progressNext(bar){
-      var api = bar.progressBar().data('api');
-      api.setValue((api.value + 1)%(api.total+1));
+      var api = bar.progressBar('api');
+      api.value((api.value() + 1) % (api.total()+1));
     }
 
   </script>
@@ -47,34 +47,38 @@
 
 <h1>progressBar examples</h1>
 
-<div id='bar1' class="panel">
-  <div>
+<div class="panel">
+  <div class="controls">
     start: 0, total: 3, width: 400px (from css)
     <a href="javascript:;" onclick="progressNext($('#bar1'))">Next</a>
   </div>
+  <div id='bar1'></div>
 </div>
 
-<div id='bar2' class="panel">
-  <div>
+<div class="panel">
+  <div class="controls">
     start: 2, total: 10, width: default, height: 18px (From css)
     <a href="javascript:;" onclick="progressNext($('#bar2'))">Next</a>
   </div>
+  <div id='bar2'></div>
 </div>
 
 <div style="direction: rtl;">
   <h3>RTL</h3>
-  <div id='bar3' class="panel">
-    <div>
+  <div class="panel">
+    <div class="controls">
       start: 0, total: 3, width: 400px (from css)
       <a href="javascript:;" onclick="progressNext($('#bar3'))">Next</a>
     </div>
+    <div id='bar3'></div>
   </div>
 
-  <div id='bar4' class="panel">
-    <div>
+  <div class="panel">
+    <div class="controls">
       start: 2, total: 10, width: default, height: 18px (From css)
       <a href="javascript:;" onclick="progressNext($('#bar4'))">Next</a>
     </div>
+    <div id='bar4'></div>
   </div>
 </div>
 
