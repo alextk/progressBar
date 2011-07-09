@@ -8,7 +8,7 @@
 *   http://en.wikipedia.org/wiki/MIT_License
 *   http://en.wikipedia.org/wiki/GNU_General_Public_License
 *
-* Date: Mon Jul 4 20:05:30 2011 +0300
+* Date: Tue Jul 5 18:13:50 2011 +0300
 */
 
 (function($) {
@@ -19,6 +19,7 @@
   var ProgressBarClass = function() {
     this.initialize.apply(this, arguments);
   };
+
   $.extend(ProgressBarClass.prototype, {
 
     initialize: function(target, config) {
@@ -32,10 +33,9 @@
 
     value: function(newValue) {
       var currValue = this._value;
-      if (arguments.length == 0) { // getter
-        return currValue;
-      } else { //setter
-        this._value = newValue % (this._total + 1);;
+      if (arguments.length === 0) return currValue; // getter
+      else { //setter
+        this._value = newValue % (this._total + 1);
         this.syncUI();
       }
       return this;
@@ -43,30 +43,11 @@
 
     total: function(newValue) {
       var total = this._total;
-      if (arguments.length == 0) { // getter
-        return total;
-      } else { //setter
+      if (arguments.length === 0) return total;
+      else { //setter
         this._total = newValue;
         this.value(this.value());
       }
-      return this;
-    },
-
-    setValue: function(newValue) {
-      if (this.value != newValue) {
-        this.value = newValue % (this.total + 1);
-        this.syncUI();
-      }
-
-      return this;
-    },
-
-    setTotal: function(newTotal) {
-      if (this.total != newTotal) {
-        this.total = newTotal;
-        this.setValue(this.value);
-      }
-
       return this;
     },
 
@@ -128,22 +109,24 @@
   }
 
   $.fn.progressBar = function(options) {
-    if(options == 'api'){
+    if (options == 'api') {
       return this.data('api');
     } else {
       return this.each(function() {
         var target = $(this);
-        if(jQuery.type(options) === "object"){
-          target.data('api', new ProgressBarClass(target, $.extend({}, $.fn.progressBar.defaults, options || {})));
+        if ($.type(options) === "object") {
+          target.data('api', new ProgressBarClass(target, $.extend({}, $.progressBar.defaults, options || {})));
         }
       });
     }
   };
-  
-  $.fn.progressBar.defaults = {
-    start: 0,
-    total: 100,
-    cssRange: {0: 'red', 30: 'orange', 75: 'green'}
+
+  $.progressBar = {
+    defaults: {
+      start: 0,
+      total: 100,
+      cssRange: {0: 'red', 30: 'orange', 75: 'green'}
+    }
   };
 
 })(jQuery);

@@ -23,7 +23,7 @@ JGROUSE_DOC = /c/devl/js/tools/jGrouseDoc-2.1
 VERSION = `cat version.txt`
 DATE = `git log --pretty=format:'%ad' -1`
 
-all: clean js css lint min pack doc
+all: clean js css hint min pack doc
 	@@echo "done"
 
 doc: 
@@ -54,7 +54,16 @@ lint: js
 	else \
 		echo "You must have NodeJS installed in order to test JS against JSLint."; \
 	fi
-	
+
+#run JSHint checks on the joined file (using node.js)
+hint: js
+	@@if test ! -z ${JS_ENGINE}; then \
+		echo "Checking jQuery against JSHint..."; \
+		${JS_ENGINE} $(BUILD_DIR)/jshint-check.js ${JS} ; \
+	else \
+		echo "You must have NodeJS installed in order to test JS against JSHint."; \
+	fi
+
 #run node.js with uglify script that compresses the js, remove all comments. add copyright notice to the head of the file (head -12)
 min: js
 	@@if test ! -z ${JS_ENGINE}; then \
