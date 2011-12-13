@@ -1,14 +1,15 @@
 /*
-* progressBar - jQuery framework extensions
+* progressBar - jQuery plugin for progress bar ui widget
 *
-* Version: 0.0.1a
+* Version: 0.0.1
+* Build: 26
 * Copyright 2011 Alex Tkachev
 *
 * Dual licensed under MIT or GPLv2 licenses
 *   http://en.wikipedia.org/wiki/MIT_License
 *   http://en.wikipedia.org/wiki/GNU_General_Public_License
 *
-* Date: Tue Jul 5 18:13:50 2011 +0300
+* Date: 13 Dec 2011 21:41:37
 */
 
 (function($) {
@@ -53,7 +54,7 @@
 
     syncUI: function() {
       var percent = Math.round(this.value() / this.total() * 100);
-      if (jQuery.isNaN(percent)) {
+      if (!jQuery.isNumeric(percent)) {
         percent = 0;
       }
       //move bar
@@ -83,7 +84,7 @@
       '<div class="progress-bar-container">' +
         '<div class="bar"/>' +
         '<div class="percent"/>' +
-        '</div>'
+      '</div>'
     );
     target.html(el);
     return el;
@@ -115,18 +116,19 @@
       return this.each(function() {
         var target = $(this);
         if ($.type(options) === "object") {
-          target.data('api', new ProgressBarClass(target, $.extend({}, $.progressBar.defaults, options || {})));
+          target.data('api', new ProgressBarClass(target, $.extend({}, $.fn.progressBar.defaults, options || {})));
         }
       });
     }
   };
 
-  $.progressBar = {
-    defaults: {
-      start: 0,
-      total: 100,
-      cssRange: {0: 'red', 30: 'orange', 75: 'green'}
-    }
+  $.fn.progressBar.defaults = {
+    start: 0,
+    total: 100,
+    cssRange: {0: 'red', 30: 'orange', 75: 'green'}
   };
+
+  //in jquery 1.7 isNumeric is added, but prior 1.7 isNaN method present
+  if($().jquery < "1.7") $.isNumeric = function(){ return !$.isNaN.apply($, arguments); };
 
 })(jQuery);

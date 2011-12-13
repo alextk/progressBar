@@ -15,7 +15,6 @@ div.progress-bar-container {
     -moz-box-shadow: 1px 1px 2px #888888;
     background-color: #aaaaaa;
     width: 10px;
-    float: left;
     background-repeat: repeat-x;
     background-position: top left; }
   div.progress-bar-container div.percent {
@@ -23,8 +22,9 @@ div.progress-bar-container {
     top: 0px;
     font-size: 11px;
     padding: 0px 5px;
-    font-style: italic;
-    font-weight: normal; }
+    font-weight: bold;
+    color: black;
+    font-family: Arial, serif; }
   div.progress-bar-container.red div.bar {
     background-image: url(images/bg_fill_red.png); }
   div.progress-bar-container.orange div.bar {
@@ -32,6 +32,5 @@ div.progress-bar-container {
   div.progress-bar-container.green div.bar {
     background-image: url(images/bg_fill_green.png); }
   div.progress-bar-container.rtl div.bar {
-    float: right;
     -webkit-box-shadow: -1px 1px 2px #888888;
     -moz-box-shadow: -1px 1px 2px #888888; }
