@@ -47,7 +47,16 @@ div.progress-bar-container
     div.bar
       background-image:  url(images/bg_fill_green.png)
 
+  &.tooSmallForRoundedCorners
+    @include round(0px 10px 10px 0px)
+    div.bar
+      @include round(0px 10px 10px 0px)
+
   &.rtl
+    &.tooSmallForRoundedCorners
+      @include round(10px 0px 0px 10px)
+      div.bar
+        @include round(10px 0px 0px 10px)
     div.bar
       //float: right
       @include shadow(-1px 1px 2px #888)

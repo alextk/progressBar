@@ -9,7 +9,7 @@
 
   <!-- Include plugin code testing framework -->
   <link rel="Stylesheet" media="screen" href="../dist/css/jquery.progress-bar.css"/>
-  <script type="text/javascript" src="../src/jquery.progress-bar.js"></script>
+  <script type="text/javascript" src="../src/progress-bar.js"></script>
 
   <!-- Include project source files -->
   <!-- Include unit test files -->
@@ -18,8 +18,10 @@
     $(document).ready(function(){
       $('#bar1').progressBar({start: 0, total: 3});
       $('#bar2').progressBar({start: 2, total: 10});
-      $('#bar3').progressBar({start: 0, total: 3});
-      $('#bar4').progressBar({start: 2, total: 10});
+      $('#bar3').progressBar({start: 2, total: 100});
+      $('#bar1_rtl').progressBar({start: 0, total: 3});
+      $('#bar2_rtl').progressBar({start: 2, total: 10});
+      $('#bar3_rtl').progressBar({start: 2, total: 100});
     });
 
     function progressNext(bar){
@@ -35,10 +37,10 @@
       padding: 20px;
       margin: 20px;
     }
-    #bar1 div.progress-bar-container, #bar3 div.progress-bar-container{
+    #bar1 div.progress-bar-container, #bar1_rtl div.progress-bar-container{
       width: 400px;
     }
-    #bar2 div.progress-bar-container, #bar4 div.progress-bar-container{
+    #bar2 div.progress-bar-container, #bar2_rtl div.progress-bar-container{
       height: 18px;
     }
   </style>
@@ -63,22 +65,38 @@
   <div id='bar2'></div>
 </div>
 
+<div class="panel">
+  <div class="controls">
+    start: 2, total: 100, width: default, height: 18px (From css)
+    <a href="javascript:;" onclick="progressNext($('#bar3'))">Next</a>
+  </div>
+  <div id='bar3'></div>
+</div>
+
 <div style="direction: rtl;">
   <h3>RTL</h3>
   <div class="panel">
     <div class="controls">
       start: 0, total: 3, width: 400px (from css)
-      <a href="javascript:;" onclick="progressNext($('#bar3'))">Next</a>
+      <a href="javascript:;" onclick="progressNext($('#bar1_rtl'))">Next</a>
     </div>
-    <div id='bar3'></div>
+    <div id='bar1_rtl'></div>
   </div>
 
   <div class="panel">
     <div class="controls">
       start: 2, total: 10, width: default, height: 18px (From css)
-      <a href="javascript:;" onclick="progressNext($('#bar4'))">Next</a>
+      <a href="javascript:;" onclick="progressNext($('#bar2_rtl'))">Next</a>
     </div>
-    <div id='bar4'></div>
+    <div id='bar2_rtl'></div>
+  </div>
+
+  <div class="panel">
+    <div class="controls">
+      start: 2, total: 100, width: default, height: 18px (From css)
+      <a href="javascript:;" onclick="progressNext($('#bar3_rtl'))">Next</a>
+    </div>
+    <div id='bar3_rtl'></div>
   </div>
 </div>
 

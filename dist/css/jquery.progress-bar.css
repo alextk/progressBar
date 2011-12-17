@@ -31,6 +31,22 @@ div.progress-bar-container {
     background-image: url(images/bg_fill_orange.png); }
   div.progress-bar-container.green div.bar {
     background-image: url(images/bg_fill_green.png); }
+  div.progress-bar-container.tooSmallForRoundedCorners {
+    -webkit-border-radius: 0px 10px 10px 0px;
+    -moz-border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 10px 10px 0px; }
+    div.progress-bar-container.tooSmallForRoundedCorners div.bar {
+      -webkit-border-radius: 0px 10px 10px 0px;
+      -moz-border-radius: 0px 10px 10px 0px;
+      border-radius: 0px 10px 10px 0px; }
+  div.progress-bar-container.rtl.tooSmallForRoundedCorners {
+    -webkit-border-radius: 10px 0px 0px 10px;
+    -moz-border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 0px 0px 10px; }
+    div.progress-bar-container.rtl.tooSmallForRoundedCorners div.bar {
+      -webkit-border-radius: 10px 0px 0px 10px;
+      -moz-border-radius: 10px 0px 0px 10px;
+      border-radius: 10px 0px 0px 10px; }
   div.progress-bar-container.rtl div.bar {
     -webkit-box-shadow: -1px 1px 2px #888888;
     -moz-box-shadow: -1px 1px 2px #888888; }

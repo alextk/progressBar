@@ -62,6 +62,7 @@
         var item = this.cssRange[i];
         this.el.toggleClass(item.css, item.to >= percent && item.from <= percent);
       }
+      this.el.toggleClass('tooSmallForRoundedCorners', barWidth > 0 && barWidth < 15);
     }
   });
 

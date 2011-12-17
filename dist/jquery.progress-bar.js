@@ -2,14 +2,14 @@
 * progressBar - jQuery plugin for progress bar ui widget
 *
 * Version: 0.0.1
-* Build: 26
+* Build: 30
 * Copyright 2011 Alex Tkachev
 *
 * Dual licensed under MIT or GPLv2 licenses
 *   http://en.wikipedia.org/wiki/MIT_License
 *   http://en.wikipedia.org/wiki/GNU_General_Public_License
 *
-* Date: 13 Dec 2011 21:41:37
+* Date: 17 Dec 2011 14:31:01
 */
 
 (function($) {
@@ -76,6 +76,7 @@
         var item = this.cssRange[i];
         this.el.toggleClass(item.css, item.to >= percent && item.from <= percent);
       }
+      this.el.toggleClass('tooSmallForRoundedCorners', barWidth > 0 && barWidth < 15);
     }
   });
 
